@@ -1,0 +1,28 @@
+.ItemField {
+  display: table-row;
+  height: 32px;
+
+  span {
+    display: table-cell;
+    padding-right: 16px;
+    font-weight: bold;
+  }
+
+  input {
+    &[type="text"],
+    &[type="email"],
+    &[type="number"],
+    &[type="datetime-local"] {
+      border-radius: 4px;
+      border: 1px solid #999;
+      padding: 4px 8px;
+    }
+  }
+
+  textarea {
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 4px 8px;
+  }
+}

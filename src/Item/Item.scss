@@ -1,0 +1,7 @@
+.Item {
+  border-top: 8px solid rgb(31, 165, 154);
+
+  &:first-child {
+    border: none;
+  }
+}
