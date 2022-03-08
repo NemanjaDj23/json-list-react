@@ -9,7 +9,7 @@ const generateInitialState = () => {
 		id: `${Math.random()} - ${Math.random()}`,
 		name: 'Nemanja',
 		surname: 'Djurovic',
-		email: 'ekonemanja@gmail.com',
+		email: 'nemanja@gmail.com',
 		isBoolean: true,
 		date: '2015-05-08T12:39:06 -02:00',
 		longText: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
@@ -26,10 +26,22 @@ function App() {
 		setItems(updatedItems);
 	};
 
+	const onFileOpen = (inputEvent: React.ChangeEvent<HTMLInputElement>) => {
+		const reader = new FileReader();
+		reader.onload = (readerEvent) => {
+			const content = JSON.parse((readerEvent.target?.result as string) || '');
+			setItems(content);
+		};
+		if (inputEvent.target?.files?.[0]) {
+			reader.readAsText(inputEvent.target.files[0]);
+		}
+	};
+
 	return (
 		<div className="App">
 			<h1>JSON List</h1>
-			<List items={items} onChange={handleChange} />
+			<input type="file" accept="applicaton/json" onChange={onFileOpen} />
+			<List key={items[0]?.id} items={items} onChange={handleChange} />
 		</div>
 	);
 }

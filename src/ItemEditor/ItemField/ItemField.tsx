@@ -40,7 +40,6 @@ function getFieldInputType(fieldValue: string | number | boolean | JSONItem) {
 	if (typeof fieldValue === 'boolean') {
 		return FieldType.RADIO;
 	}
-
 	return undefined;
 }
 
@@ -139,11 +138,14 @@ function ItemField({ fieldName, fieldValue, onChange }: ItemFieldProps) {
 			{fieldType === FieldType.TEXTAREA && (
 				<textarea
 					name={fieldName}
-					rows={4}
+					rows={1}
 					cols={50}
 					value={fieldValue as string}
 					onChange={handleInputChange}
 				/>
+			)}
+			{fieldType === undefined && (
+				<span className="simpleText">Array</span>
 			)}
 		</div>
 	);
